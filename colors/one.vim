@@ -251,7 +251,6 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:mono_1 = 'abb2bf'
     let s:mono_2 = '828997'
     let s:mono_3 = '5c6370'
-    let s:mono_4 = '4b5263'
 
     let s:hue_1  = '56b6c2' " cyan
     let s:hue_2  = '61afef' " blue
@@ -277,7 +276,6 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:mono_1 = '494b53'
     let s:mono_2 = '696c77'
     let s:mono_3 = 'a0a1a7'
-    let s:mono_4 = 'c2c2c3'
 
     let s:hue_1  = '0184bc' " cyan
     let s:hue_2  = '4078f2' " blue
@@ -312,7 +310,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('bold',         '',              '',               'bold')
   call <sid>X('ColorColumn',  '',              s:syntax_cursor,  '')
   call <sid>X('Conceal',      '',              '',               '')
-  call <sid>X('Cursor',       '',              s:syntax_accent,  '')
+  call <sid>X('Cursor',       '',     s:syntax_accent,          '')
   call <sid>X('CursorIM',     '',              '',               '')
   call <sid>X('CursorColumn', '',              s:syntax_cursor,  '')
   call <sid>X('CursorLine',   '',              s:syntax_cursor,  'none')
@@ -321,15 +319,15 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('VertSplit',    s:vertsplit,     '',               'none')
   call <sid>X('Folded',       s:syntax_bg,     s:syntax_fold_bg, 'none')
   call <sid>X('FoldColumn',   s:mono_3,        s:syntax_cursor,  '')
-  call <sid>X('IncSearch',    s:hue_6,         '',               '')
-  call <sid>X('LineNr',       s:mono_4,        '',               '')
-  call <sid>X('CursorLineNr', s:syntax_fg,     s:syntax_cursor,  'none')
+  call <sid>X('IncSearch',    s:hue_6,         '',        '')
+  call <sid>X('LineNr',       s:syntax_gutter, '',               '')
+  call <sid>X('CursorLineNr', s:syntax_fg,     '',               'none')
   call <sid>X('MatchParen',   s:syntax_bg,     s:hue_5,          '')
   call <sid>X('Italic',       '',              '',               'italic')
   call <sid>X('ModeMsg',      s:syntax_fg,     '',               '')
   call <sid>X('MoreMsg',      s:syntax_fg,     '',               '')
   call <sid>X('NonText',      s:mono_3,        '',               'none')
-  call <sid>X('PMenu',        '',              s:syntax_bg,      '')
+  call <sid>X('PMenu',        '',              s:special_grey,      '')
   call <sid>X('PMenuSel',     '',              s:visual_grey,    '')
   call <sid>X('PMenuSbar',    '',              s:syntax_bg,      '')
   call <sid>X('PMenuThumb',   '',              s:mono_1,         '')
@@ -341,7 +339,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('TabLine',      s:mono_1,        s:syntax_bg,      '')
   call <sid>X('TabLineFill',  s:mono_3,        s:visual_grey,    'none')
   call <sid>X('TabLineSel',   s:syntax_bg,     s:hue_2,          '')
-  call <sid>X('Title',        s:syntax_fg,     '',               'bold')
+  call <sid>X('Title',        s:hue_4,        '',               'none')
   call <sid>X('Visual',       '',              s:visual_grey,    '')
   call <sid>X('VisualNOS',    '',              s:visual_grey,    '')
   call <sid>X('WarningMsg',   s:hue_5,         '',               '')
@@ -513,9 +511,8 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('htmlTagN',           s:hue_5,  '', '')
   call <sid>X('htmlSpecialTagName', s:hue_5,  '', '')
   call <sid>X('htmlTag',            s:mono_3, '', '')
-  call <sid>X('htmlEndTag',         s:mono_3, '', '')
 
-  call <sid>X('MatchTag',           s:syntax_accent, '', 'underline')
+  call <sid>X('MatchTag',           s:syntax_accent, s:visual_grey, 'bold')
   " }}}
 
   " JavaScript highlighting -------------------------------------------------{{{
@@ -530,22 +527,16 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('javaScriptReserved',     s:hue_3,   '', '')
   " https://github.com/pangloss/vim-javascript
   call <sid>X('jsArrowFunction',        s:hue_3,   '', '')
-  call <sid>X('jsBraces',               s:mono_2,  '', '')
-  call <sid>X('jsClassBraces',          s:mono_2,  '', '')
   call <sid>X('jsClassKeywords',        s:hue_3,   '', '')
   call <sid>X('jsDocParam',             s:hue_2,   '', '')
   call <sid>X('jsDocTags',              s:hue_3,   '', '')
-  call <sid>X('jsFuncBraces',           s:mono_2,  '', '')
   call <sid>X('jsFuncCall',             s:hue_2,   '', '')
-  call <sid>X('jsFuncParens',           s:mono_2,  '', '')
   call <sid>X('jsFunction',             s:hue_3,   '', '')
   call <sid>X('jsGlobalObjects',        s:hue_6_2, '', '')
   call <sid>X('jsModuleWords',          s:hue_3,   '', '')
   call <sid>X('jsModules',              s:hue_3,   '', '')
-  call <sid>X('jsNoise',                s:mono_2,  '', '')
   call <sid>X('jsNull',                 s:hue_6,   '', '')
   call <sid>X('jsOperator',             s:hue_3,   '', '')
-  call <sid>X('jsParens',               s:mono_2,  '', '')
   call <sid>X('jsStorageClass',         s:hue_3,   '', '')
   call <sid>X('jsTemplateBraces',       s:hue_5_2, '', '')
   call <sid>X('jsTemplateVar',          s:hue_4,   '', '')
@@ -575,16 +566,16 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   " }}}
 
   " JSON highlighting -------------------------------------------------------{{{
-  call <sid>X('jsonCommentError',         s:mono_1,  '', ''        )
-  call <sid>X('jsonKeyword',              s:hue_5,   '', ''        )
-  call <sid>X('jsonQuote',                s:mono_3,  '', ''        )
-  call <sid>X('jsonTrailingCommaError',   s:hue_5,   '', 'reverse' )
-  call <sid>X('jsonMissingCommaError',    s:hue_5,   '', 'reverse' )
-  call <sid>X('jsonNoQuotesError',        s:hue_5,   '', 'reverse' )
-  call <sid>X('jsonNumError',             s:hue_5,   '', 'reverse' )
-  call <sid>X('jsonString',               s:hue_4,   '', ''        )
-  call <sid>X('jsonStringSQError',        s:hue_5,   '', 'reverse' )
-  call <sid>X('jsonSemicolonError',       s:hue_5,   '', 'reverse' )
+  call <sid>X('jsonCommentError',      s:mono_1, '', ''        )
+  call <sid>X('jsonKeyword',           s:hue_5,  '', ''        )
+  call <sid>X('jsonQuote',             s:mono_3, '', ''        )
+  call <sid>X('jsonTrailingCommaError',s:hue_5,  '', 'reverse' )
+  call <sid>X('jsonMissingCommaError', s:hue_5,  '', 'reverse' )
+  call <sid>X('jsonNoQuotesError',     s:hue_5,  '', 'reverse' )
+  call <sid>X('jsonNumError',          s:hue_5,  '', 'reverse' )
+  call <sid>X('jsonString',            s:hue_4,  '', ''        )
+  call <sid>X('jsonStringSQError',     s:hue_5,  '', 'reverse' )
+  call <sid>X('jsonSemicolonError',    s:hue_5,  '', 'reverse' )
   " }}}
 
   " Markdown highlighting ---------------------------------------------------{{{
@@ -592,7 +583,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('markdownBold',             s:hue_6,   '', 'bold')
   call <sid>X('markdownItalic',           s:hue_6,   '', 'bold')
   call <sid>X('markdownCode',             s:hue_4,   '', '')
-  call <sid>X('markdownCodeBlock',        s:hue_5,   '', '')
+  call <sid>X('markdownCodeBlock',        s:hue_4,   '', '')
   call <sid>X('markdownCodeDelimiter',    s:hue_4,   '', '')
   call <sid>X('markdownHeadingDelimiter', s:hue_5_2, '', '')
   call <sid>X('markdownH1',               s:hue_5,   '', '')
@@ -637,7 +628,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('pythonImport',               s:hue_3,     '', '')
   call <sid>X('pythonBuiltin',              s:hue_1,     '', '')
   call <sid>X('pythonStatement',            s:hue_3,     '', '')
-  call <sid>X('pythonParam',                s:hue_6,     '', '')
+  "call <sid>X('pythonParam',                s:hue_6,     '', '')
   call <sid>X('pythonEscape',               s:hue_5,     '', '')
   call <sid>X('pythonSelf',                 s:mono_2,    '', 'italic')
   call <sid>X('pythonClass',                s:hue_2,     '', '')
@@ -728,8 +719,41 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('rustCommentBlockDocError', s:mono_3,    '', '')
   " }}}
 
+  " Python highlighting -------------------------------------------------------{{{
+    "let s:hue_1  = '56b6c2' " cyan
+    "let s:hue_2  = '61afef' " blue
+    "let s:hue_3  = 'c678dd' " purple
+    "let s:hue_4  = '98c379' " green
+
+    "let s:hue_5   = 'e06c75' " red 1
+    "let s:hue_5_2 = 'be5046' " red 2
+
+    "let s:hue_6   = 'd19a66' " orange 1
+  call <sid>X('pythonBuiltin',            s:hue_1,    '', '')
+  call <sid>X('pythonStatement',            s:hue_5,    '', '')
+  "call <sid>X('pythonClassParameters',            s:hue_6,    '', '')
+  "call <sid>X('pythonParam',            s:hue_6,    '', '')
+  "call <sid>X('pythonDocstring',          s:mono_3,   '', '')
+  "call <sid>X('pythonExceptions',         s:hue_5,    '', '')
+  call <sid>X('pythonEscape',              s:hue_5,    '', '')
+  call <sid>X('pythonEscape',              s:hue_5,    '', '')
+  "call <sid>X('pythonSelf',                s:hue_1,    '', 'italic')
+  call <sid>X('pythonSelf',                s:mono_2,    '', 'italic')
+  call <sid>X('pythonRun',                 s:hue_5_2,     '', '')
+  "call <sid>X('pythonDottedName',          s:hue_5,     '', '')
+  "call <sid>X('pythonDecorator',           s:hue_5,   '', '')
+  call <sid>X('pythonClass',                     s:hue_3,   '', '')
+  call <sid>X('pythonEscape',                    s:hue_5,   '', '')
+  call <sid>X('pythonFunction',                  s:hue_2,   '', '')
+  call <sid>X('pythonImport',                   s:hue_2,   '', '')
+  call <sid>X('pythonKeyword',                   s:hue_2,   '', '')
+  call <sid>X('pythonModule',                    s:hue_3,   '', '')
+  call <sid>X('pythonStringDelimiter',           s:hue_4,   '', '')
+  call <sid>X('pythonSymbol',                    s:hue_1,   '', '')
+
+  " }}}
+
   " man highlighting --------------------------------------------------------{{{
-  hi link manTitle String
   call <sid>X('manFooter', s:mono_3, '', '')
   " }}}
 
